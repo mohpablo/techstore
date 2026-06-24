@@ -1,0 +1,150 @@
+
+TECHSTORE DATABASE SCHEMA + LARAVEL MODELS
+
+========================
+DATABASE SCHEMA
+========================
+
+1. USERS
+id, name, email, phone, password, role(enum: admin, manager, customer),
+avatar, email_verified_at, remember_token, timestamps, deleted_at
+
+2. CATEGORIES
+id, name, image, description, timestamps, deleted_at
+
+3. PRODUCTS
+id, category_id, name, description, short_description,
+price, discount_price, stock, brand,
+status(enum: active, inactive, out_of_stock),
+is_featured, timestamps, deleted_at
+
+4. PRODUCT_IMAGES
+id, product_id, image_url, timestamps, deleted_at
+
+5. PRODUCT_SPECIFICATIONS
+id, product_id, spec_key, spec_value, timestamps, deleted_at
+
+6. ADDRESSES
+id, user_id, full_name, phone,
+city, area, street, building, floor, apartment,
+is_default, timestamps, deleted_at
+
+7. ORDERS
+id, user_id, address_id, order_number,
+subtotal, shipping_fee, discount, total,
+status(enum: pending, confirmed, processing, shipped, delivered, cancelled),
+estimated_delivery_date, delivered_at,
+notes, timestamps, deleted_at
+
+8. ORDER_ITEMS
+id, order_id, product_id,
+product_name, product_price, quantity, subtotal,
+timestamps, deleted_at
+
+
+========================
+LARAVEL MODELS
+========================
+
+USER MODEL
+-----------
+class User extends Model {
+    use SoftDeletes;
+
+    protected $fillable = [
+        'name','email','phone','password','role','avatar'
+    ];
+
+    public function orders(){ return $this->hasMany(Order::class); }
+    public function addresses(){ return $this->hasMany(Address::class); }
+}
+
+CATEGORY MODEL
+--------------
+class Category extends Model {
+    use SoftDeletes;
+
+    protected $fillable = ['name','image','description'];
+
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+}
+
+PRODUCT MODEL
+-------------
+class Product extends Model {
+    use SoftDeletes;
+
+    protected $fillable = [
+        'category_id','name','description','short_description',
+        'price','discount_price','stock','brand','status','is_featured'
+    ];
+
+    public function category(){ return $this->belongsTo(Category::class); }
+    public function images(){ return $this->hasMany(ProductImage::class); }
+    public function specs(){ return $this->hasMany(ProductSpecification::class); }
+}
+
+PRODUCT IMAGE MODEL
+-------------------
+class ProductImage extends Model {
+    use SoftDeletes;
+
+    protected $fillable = ['product_id','image_url'];
+
+    public function product(){ return $this->belongsTo(Product::class); }
+}
+
+PRODUCT SPEC MODEL
+------------------
+class ProductSpecification extends Model {
+    use SoftDeletes;
+
+    protected $fillable = ['product_id','spec_key','spec_value'];
+
+    public function product(){ return $this->belongsTo(Product::class); }
+}
+
+ADDRESS MODEL
+-------------
+class Address extends Model {
+    use SoftDeletes;
+
+    protected $fillable = [
+        'user_id','full_name','phone',
+        'city','area','street','building','floor','apartment','is_default'
+    ];
+
+    public function user(){ return $this->belongsTo(User::class); }
+}
+
+ORDER MODEL
+-----------
+class Order extends Model {
+    use SoftDeletes;
+
+    protected $fillable = [
+        'user_id','address_id','order_number',
+        'subtotal','shipping_fee','discount','total',
+        'status','estimated_delivery_date','delivered_at','notes'
+    ];
+
+    public function user(){ return $this->belongsTo(User::class); }
+    public function address(){ return $this->belongsTo(Address::class); }
+    public function items(){ return $this->hasMany(OrderItem::class); }
+}
+
+ORDER ITEM MODEL
+-----------------
+class OrderItem extends Model {
+    use SoftDeletes;
+
+    protected $fillable = [
+        'order_id','product_id',
+        'product_name','product_price','quantity','subtotal'
+    ];
+
+    public function order(){ return $this->belongsTo(Order::class); }
+    public function product(){ return $this->belongsTo(Product::class); }
+}

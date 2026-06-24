@@ -1,0 +1,232 @@
+1. Login Page
+
+For admin + manager authentication.
+
+Functions:
+
+email/password login
+redirect by role
+auth token storage
+
+Route:
+
+/admin/login
+2. Dashboard Page
+
+Main overview.
+
+Shows:
+
+Stats cards
+Total products
+Total orders
+Pending orders
+Delivered orders
+
+Optional:
+
+Revenue
+Low stock products
+
+Could also show:
+
+recent orders
+recent users
+
+Route:
+
+/admin/dashboard
+3. Products Page
+
+This will probably be your biggest page.
+
+Functions:
+
+list all products
+search
+filter
+soft delete
+restore (optional)
+
+Table columns:
+
+image
+name
+category
+price
+stock
+status
+featured
+actions
+
+Route:
+
+/admin/products
+4. Add / Edit Product Page
+
+Could be one reusable page.
+
+Sections:
+
+Basic info
+name
+description
+short description
+brand
+Pricing
+price
+discount price
+Inventory
+stock
+status
+Category
+Images upload
+Specifications
+
+Dynamic key/value inputs:
+
+RAM → 8GB
+Storage → 256GB
+Battery → 5000mAh
+
+Routes:
+
+/admin/products/create
+/admin/products/:id/edit
+5. Categories Page
+
+Functions:
+
+add category
+edit category
+delete category
+
+Fields:
+
+name
+image
+description
+
+Route:
+
+/admin/categories
+6. Orders Page
+
+Very important.
+
+Shows all orders.
+
+Columns:
+
+order number
+customer
+total
+status
+estimated delivery
+created date
+
+Filters:
+
+pending
+processing
+shipped
+delivered
+cancelled
+
+Route:
+
+/admin/orders
+7. Order Details Page
+
+Detailed order view.
+
+Shows:
+
+Customer info
+
+(name, phone)
+
+Delivery address
+Ordered items
+Price breakdown
+subtotal
+shipping
+discount
+total
+Status controls
+
+Buttons:
+
+Confirm
+Process
+Ship
+Deliver
+Cancel
+
+This page updates:
+
+status
+delivered_at
+
+Route:
+
+/admin/orders/:id
+8. Users Page
+
+Since users table exists.
+
+Functions:
+
+view all users
+filter by role
+soft delete (optional)
+
+Columns:
+
+name
+email
+phone
+role
+joined date
+
+Managers can maybe only view.
+
+Admins can edit role.
+
+Route:
+
+/admin/users
+9. Settings Page (Optional)
+
+Not DB-heavy, but useful.
+
+Could handle:
+
+profile settings
+password change
+
+Route:
+
+/admin/settings
+Total Page Count
+Required
+Login
+Dashboard
+Products
+Add/Edit Product
+Categories
+Orders
+Order Details
+Users
+
+= 8 pages
+
+Optional
+Settings
+
+So realistically:
+
+8–9 pages
+
+That’s exactly right for a graduation-level React admin.
+

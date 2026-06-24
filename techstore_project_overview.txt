@@ -1,0 +1,202 @@
+
+TECHSTORE FULL PROJECT OVERVIEW
+(Flutter + React + Laravel)
+
+========================================
+1. PROJECT SUMMARY
+========================================
+
+TechStore is a full-stack e-commerce system for electronics and accessories.
+
+It consists of:
+
+- Flutter Mobile App (Customer)
+- React Admin Dashboard (Admin + Manager)
+- Laravel REST API Backend
+
+All systems share a single MySQL database.
+
+========================================
+2. SYSTEM ARCHITECTURE
+========================================
+
+                     ┌─────────────────────┐
+                     │   Flutter App       │
+                     │ (Customer Side)     │
+                     └─────────┬───────────┘
+                               │ REST API
+                               ▼
+┌────────────────────────────────────────────────┐
+│                Laravel Backend                 │
+│              (REST API Server)                │
+│                                                │
+│  - Authentication (JWT / Sanctum)            │
+│  - Products Management                        │
+│  - Orders Processing                         │
+│  - Addresses                                 │
+│  - Business Logic                            │
+└───────────────┬───────────────────────────────┘
+                │
+                ▼
+        ┌──────────────────┐
+        │   MySQL Database │
+        └──────────────────┘
+                ▲
+                │ REST API
+┌───────────────┴───────────────────────────────┐
+│            React Admin Dashboard              │
+│  - Manage Products                           │
+│  - Manage Orders                            │
+│  - Manage Categories                        │
+│  - View Users                               │
+└──────────────────────────────────────────────┘
+
+
+========================================
+3. DATABASE DESIGN (CORE)
+========================================
+
+users
+categories
+products
+product_images
+product_specifications
+addresses
+orders
+order_items
+
+(All tables support soft deletes)
+
+========================================
+4. FLUTTER APP (CUSTOMER SIDE)
+========================================
+
+Features:
+
+AUTH
+- Login
+- Register
+- Logout
+
+STORE
+- Home screen (featured products)
+- Category listing
+- Product listing
+- Product details
+
+SEARCH
+- Search products
+
+CART (LOCAL ONLY)
+- Add/remove items
+- Update quantity
+
+CHECKOUT
+- Select address
+- Create order
+- Place order
+
+ORDERS
+- Order history
+- Order details
+- Order status tracking
+
+FLOW:
+Flutter Cart → API Checkout → Laravel Order Creation
+
+========================================
+5. REACT ADMIN DASHBOARD
+========================================
+
+Features:
+
+AUTH
+- Admin login
+
+DASHBOARD
+- Total orders
+- Revenue (optional calc)
+- Top products
+
+PRODUCT MANAGEMENT
+- Add product
+- Edit product
+- Delete product
+- Upload images
+- Manage stock
+
+CATEGORY MANAGEMENT
+- Create categories
+- Edit categories
+
+ORDER MANAGEMENT
+- View orders
+- Change status:
+  pending → confirmed → processing → shipped → delivered
+
+USER MANAGEMENT
+- View users
+- Manage roles
+
+========================================
+6. LARAVEL BACKEND
+========================================
+
+Core Responsibilities:
+
+AUTH SYSTEM
+- User authentication
+- Role-based access
+
+PRODUCT API
+- CRUD products
+- Handle images
+- Manage specs
+
+ORDER API
+- Create orders
+- Validate stock
+- Save order items
+- Track status
+
+ADDRESS API
+- Manage user addresses
+
+BUSINESS LOGIC
+- Calculate totals
+- Stock deduction
+- Delivery estimation
+
+========================================
+7. DATA FLOW
+========================================
+
+1. User browses products (Flutter)
+2. Adds items to cart (local storage)
+3. Sends checkout request
+4. Laravel creates order
+5. Admin updates order status (React)
+6. User tracks order in Flutter
+
+========================================
+8. KEY DESIGN DECISIONS
+========================================
+
+- No server-side cart (simplified architecture)
+- No SKU system (simplified inventory)
+- No slug system (API-based navigation)
+- Soft deletes used across all tables
+- Order snapshotting for product history
+- Enum-based roles and statuses
+
+========================================
+9. FINAL GOAL
+========================================
+
+TechStore demonstrates:
+
+- Mobile App Development (Flutter)
+- Admin Dashboard Development (React)
+- REST API Design (Laravel)
+- Relational Database Design (MySQL)
+- Real-world e-commerce architecture
