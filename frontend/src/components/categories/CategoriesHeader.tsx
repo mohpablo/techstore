@@ -1,7 +1,7 @@
 import { Archive, TagIcon } from "lucide-react";
 import Header from "../Header";
 import { useNavigate } from "react-router-dom";
-type Porps = {
+type Props = {
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   archived: boolean;
@@ -13,7 +13,7 @@ export default function CategoriesHeader({
   setSearch,
   setArchived,
   archived,
-}: Porps) {
+}: Props) {
   const navigate = useNavigate();
   return (
     <Header

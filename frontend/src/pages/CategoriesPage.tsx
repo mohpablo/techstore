@@ -37,6 +37,7 @@ export default function CategoriesPage() {
   const createdCatName = location.state?.createdCategory;
   const updatedCatName = location.state?.UpdatedCategory;
   const archivedCatName = location.state?.ArchivedCategory;
+  const restoredCatName = location.state?.RestoredCategory;
 
   const [successMsg, setSuccessMsg] = useState<string | null>();
 
@@ -46,6 +47,7 @@ export default function CategoriesPage() {
     if (createdCatName) message = `Category ${createdCatName} created`;
     if (updatedCatName) message = `Category ${updatedCatName} was updated`;
     if (archivedCatName) message = `Category ${archivedCatName} was archived`;
+    if (restoredCatName) message = `Category ${restoredCatName} was restored`;
 
     if (message) {
       const timer = setTimeout(() => {
@@ -55,7 +57,7 @@ export default function CategoriesPage() {
 
       return () => clearTimeout(timer);
     }
-  }, [createdCatName, updatedCatName, archivedCatName]);
+  }, [createdCatName, updatedCatName, archivedCatName, restoredCatName]);
 
   return (
     <div className="p-8">

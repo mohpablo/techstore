@@ -16,7 +16,7 @@ import InputField from "../InputField";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUpdateUser, useViewUser } from "../../hooks/useUsers";
 import InputFieldSkeleton from "../InputFieldSkeleton";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import {
   updateUserSchema,
   type UpdateUserSchema,
@@ -40,13 +40,16 @@ export default function UpdateUser() {
     setValue,
     handleSubmit,
     reset,
-    watch,
+    control,
     formState: { errors, isDirty },
   } = useForm<UpdateUserSchema>({
     resolver: zodResolver(updateUserSchema(user?.email || "")),
   });
 
-  const currentRole = watch("role");
+  const currentRole = useWatch({
+    control,
+    name: "role",
+  });
 
   useEffect(() => {
     if (user) {
@@ -60,10 +63,6 @@ export default function UpdateUser() {
       });
     }
   }, [user, reset]);
-
-  useEffect(() => {
-    register("role");
-  }, [register]);
 
   const onSubmit = (data: UpdateUserSchema) => {
     if (!isDirty) return console.log("No changes found");
@@ -161,18 +160,18 @@ export default function UpdateUser() {
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {ROLES.map((role) => {
-                  let isActive = currentRole === role.value;
+                  const isActive = currentRole === role.value;
                   return (
                     <button
                       key={role.value}
                       type="button"
+                      disabled={!!isActive}
                       onClick={() =>
-                        isActive
-                          ? setValue("role", "", { shouldDirty: true })
-                          : setValue("role", role.value, { shouldDirty: true })
+                        setValue("role", role.value, { shouldDirty: true })
                       }
                       className={`
                         relative flex flex-col items-start p-3.5 rounded-xl border text-left transition-all
+                        disabled:cursor-not-allowed disabled:opacity-90
                         ${
                           isActive
                             ? "border-black bg-black text-white dark:border-white dark:bg-white dark:text-black shadow-md"

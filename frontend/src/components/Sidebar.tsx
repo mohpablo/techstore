@@ -8,13 +8,14 @@ import {
   Users,
   Settings,
   LogOut,
+  type LucideIcon,
 } from "lucide-react";
 import { useContext } from "react";
 import { userContext } from "../contexts/UserContext";
 
 type NavItem = {
   name: string;
-  icon: any;
+  icon: LucideIcon;
   path: string;
 };
 

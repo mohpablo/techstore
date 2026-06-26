@@ -130,9 +130,10 @@ export const deleteCategory = async (id: number): Promise<void> => {
   }
 };
 
-export const restoreCategory = async (id: number): Promise<void> => {
+export const restoreCategory = async (id: number): Promise<Category> => {
   try {
-    await api.get(`categories/${id}/restore`);
+    const reponse = await api.get(`categories/${id}/restore`);
+    return reponse.data.data;
   } catch (err) {
     if (err && typeof err === "object" && "response" in err) {
       const axiosError = err as { response?: { data?: unknown } };

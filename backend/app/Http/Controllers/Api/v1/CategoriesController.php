@@ -97,6 +97,6 @@ class CategoriesController extends Controller
     public function restore(Category $category)
     {
         $category->restore();
-        return response()->json(['message' => 'Category restored successfully']);
+        return new CategoryResource($category);
     }
 }

@@ -120,9 +120,9 @@ export function useRestoreCategory() {
   const queryClient = useQueryClient();
   const { mutate, error, isPending } = useMutation({
     mutationFn: async (id: number) => await restoreCategory(id),
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["categories"] });
-      navigate("/categories");
+      navigate("/categories", { state: { RestoredCategory: data.name } });
     },
   });
 

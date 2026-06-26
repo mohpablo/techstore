@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
-class WebAuthControllerAuthController extends Controller
+class WebAuthController extends Controller
 {
     public function login(LoginRequest $request)
     {

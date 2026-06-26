@@ -4,14 +4,15 @@ use App\Http\Controllers\Api\v1\CategoriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\UsersController;
+use App\Http\Controllers\Api\v1\WebAuthController;
 use App\Http\Controllers\Api\v1\WebAuthControllerAuthController;
 
 Route::prefix('v1')->group(
     function () {
-        Route::post('/login', [WebAuthControllerAuthController::class, 'login']);
-        Route::post('/register', [WebAuthControllerAuthController::class, 'register']);
+        Route::post('/login', [WebAuthController::class, 'login']);
+        Route::post('/register', [WebAuthController::class, 'register']);
         Route::middleware('auth:sanctum')->group(function () {
-            Route::post('/logout', [WebAuthControllerAuthController::class, 'logout']);
+            Route::post('/logout', [WebAuthController::class, 'logout']);
             Route::get('/user', function (Request $request) {
                 return $request->user();
             });
