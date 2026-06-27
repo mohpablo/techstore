@@ -74,7 +74,7 @@ export default function ProductsTable({
           render: (product) => product.stock,
         },
         {
-          header: "Is Featured",
+          header: "Featured",
           className: "text-zinc-600 dark:text-zinc-400",
           render: (product) => (
             <span
