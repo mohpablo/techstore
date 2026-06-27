@@ -27,7 +27,7 @@ class CategoriesController extends Controller
                 $query->onlyTrashed();
             })
             ->latest()
-            ->paginate(2)
+            ->paginate(5)
             ->withQueryString();
         return response()->json([
             'data' => new CategoryCollection($cats),

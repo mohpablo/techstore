@@ -19,7 +19,7 @@ export default function ErrorToast({ message, onClose }: ErrorToastProps) {
       <div className="relative overflow-hidden rounded-2xl border border-red-200 bg-red-50/50 dark:bg-red-950/20 dark:border-red-900/50">
 
         <div className="flex items-center gap-3 p-4 pl-6">
-          <div className="flex-shrink-0 text-red-600">
+          <div className="shrink-0 text-red-600">
             <AlertCircle size={20} strokeWidth={2.5} />
           </div>
 

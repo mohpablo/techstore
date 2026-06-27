@@ -13,22 +13,6 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-    //      Category::insert([
-    //         [
-    //             'name' => 'Smartphones',
-    //             'image' => 'categories/phone.jpg',
-    //             'description' => 'Latest smartphones'
-    //         ],
-    //         [
-    //             'name' => 'Laptops',
-    //             'image' => 'categories/laptop.jpg',
-    //             'description' => 'Powerful laptops'
-    //         ],
-    //         [
-    //             'name' => 'Accessories',
-    //             'image' => 'categories/accessories.jpg',
-    //             'description' => 'Tech accessories'
-    //         ]
-    //     ]);
+        Category::factory()->count(10)->create();
     }
 }

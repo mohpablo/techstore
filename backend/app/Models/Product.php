@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Enums\ProductStatusEnum;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['category_id', 'name', 'description', 'short_description', 'price', 'discount_price', 'stock', 'brand', 'status', 'is_featured'])]
 class Product extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes,HasFactory;
 
     public function category()
     {
