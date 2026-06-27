@@ -46,7 +46,7 @@ export default function CreateCategory() {
   };
 
   const removeImage = () => {
-    setValue("image", undefined as any);
+    setValue("image", undefined as never);
     if (imagePreview) {
       URL.revokeObjectURL(imagePreview);
       setImagePreview(null);

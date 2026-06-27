@@ -50,11 +50,24 @@ export default function UsersTable({
         {
           header: "Role",
           align: "left",
-          render: (user) => (
-            <span className="px-2.5 py-1 rounded-lg text-xs font-medium bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
-              {user.role}
-            </span>
-          ),
+          render: (user) => {
+            const roleConfig: Record<string, string> = {
+              admin:
+                "bg-purple-50 text-purple-700 ring-purple-700/10 dark:bg-purple-500/10 dark:text-purple-400 dark:ring-purple-500/20",
+              manager:
+                "bg-blue-50 text-blue-700 ring-blue-700/10 dark:bg-blue-500/10 dark:text-blue-400 dark:ring-blue-500/20",
+              customer:
+                "bg-zinc-50 text-zinc-600 ring-zinc-500/10 dark:bg-zinc-400/10 dark:text-zinc-400 dark:ring-zinc-400/20",
+            };
+            const roleClasses = roleConfig[user.role.toLowerCase()];
+            return (
+              <span
+                className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-medium ring-1 ring-inset capitalize ${roleClasses}`}
+              >
+                {user.role}
+              </span>
+            );
+          },
         },
         {
           header: "Phone",

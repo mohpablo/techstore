@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\CategoriesController;
+use App\Http\Controllers\Api\v1\ProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\UsersController;
@@ -22,6 +23,7 @@ Route::prefix('v1')->group(
             Route::apiResource('categories', CategoriesController::class);
             Route::get('/categories/{category}/archive', [CategoriesController::class, 'archive']);
             Route::get('/categories/{category}/restore', [CategoriesController::class, 'restore'])->withTrashed();
+            Route::apiResource('products', ProductsController::class);
         });
     }
 );

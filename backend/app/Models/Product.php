@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ProductStatusEnum;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,10 +18,17 @@ class Product extends Model
     }
     public function images()
     {
-        return $this->hasMany(ProductImage::class,'product_id');
+        return $this->hasMany(ProductImage::class, 'product_id');
     }
     public function specs()
     {
         return $this->hasMany(ProductSpecification::class);
+    }
+
+    protected function casts()
+    {
+        return [
+            'status' => ProductStatusEnum::class
+        ];
     }
 }

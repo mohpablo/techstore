@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained('categories');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->text('description');
             $table->text('short_description');
             $table->float('price');
             $table->float('discount_price');
             $table->integer('stock');
             $table->string('brand');
-            $table->enum('status', ['active', 'inactive', 'out_of_stock']);
+            $table->enum('status', ['active', 'inactive', 'out_of_stock'])->default('inactive');
             $table->boolean('is_featured');
             $table->softDeletes();
             $table->timestamps();
