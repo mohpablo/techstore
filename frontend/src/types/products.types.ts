@@ -2,7 +2,7 @@ import type { PaginationMeta } from "./paginationMeta.type";
 
 type Product = {
   id: number;
-  name:string,
+  name: string;
   brand: string;
   category: string;
   discount_price: number;
@@ -10,12 +10,16 @@ type Product = {
   short_description: string;
   status: string;
   stock: number;
-  is_featured:boolean
+  is_featured: boolean;
 };
+
+type ViewProduct = {
+  description: string;
+} & Product;
 
 type ProductResponse = {
   data: Product[];
   meta: PaginationMeta;
 };
 
-export type { Product , ProductResponse };
+export type { Product, ProductResponse, ViewProduct };

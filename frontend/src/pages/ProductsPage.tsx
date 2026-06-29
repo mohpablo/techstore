@@ -22,7 +22,7 @@ export default function ProductsPage() {
     archived,
   );
   return (
-    <div className="p-8">
+    <>
       <ProductsHeader
         isArchived={archived}
         onAddProduct={() => {}}
@@ -47,6 +47,6 @@ export default function ProductsPage() {
           ondelete={() => {}}
         />
       )}
-    </div>
+    </>
   );
 }

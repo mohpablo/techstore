@@ -55,7 +55,7 @@ export default function CategoriesTable({
         <>
           {!isArchived && (
             <button
-              onClick={() => navigate(`/categories/${category.id}/edit`)}
+              onClick={() => navigate(`${category.id}/edit`)}
               className="p-2 border rounded-lg text-blue-600 dark:text-blue-300 hover:bg-blue-50/50 dark:hover:bg-blue-950/30 transition-colors"
             >
               <Pencil size={16} />
@@ -70,7 +70,7 @@ export default function CategoriesTable({
             </button>
           ) : (
             <button
-              onClick={() => navigate(`/categories/${category.id}`)}
+              onClick={() => navigate(`${category.id}`)}
               className="p-2 border rounded-lg text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors"
             >
               <Eye size={16} />

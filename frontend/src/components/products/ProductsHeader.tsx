@@ -47,7 +47,7 @@ export default function ProductsHeader({
       filterPlaceholder="All Status"
       filterValue={statusFilter}
       setFilterValue={setStatusFilter}
-      searchPlaceholder="search for a product by name"
+      searchPlaceholder="search for a product by name or category"
       searchTerm={searchTerm}
       setSearchTerm={setSearchTerm}
     />

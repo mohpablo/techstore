@@ -2,6 +2,7 @@ import { Archive, ArchiveRestore, Eye, Pencil, Trash } from "lucide-react";
 import type { PaginationMeta } from "../../types/paginationMeta.type";
 import type { Product } from "../../types/products.types";
 import Table from "../Table";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   products: Product[] | undefined;
@@ -24,6 +25,7 @@ export default function ProductsTable({
   onRestore,
   ondelete,
 }: Props) {
+  const navigate = useNavigate();
   return (
     <Table<Product>
       title="Products"
@@ -60,7 +62,7 @@ export default function ProductsTable({
         {
           header: "discount_price",
           className: "text-zinc-600 dark:text-zinc-400",
-          align:"center",
+          align: "center",
           render: (product) => product.discount_price,
         },
         {
@@ -99,23 +101,25 @@ export default function ProductsTable({
               active: {
                 text: "Active",
                 classes:
-                  "bg-emerald-50 text-emerald-700 ring-emerald-600/20 dark:bg-emerald-500/10 dark:text-emerald-400 dark:ring-emerald-500/20",
+                  "bg-emerald-50 text-emerald-700 ring-emerald-600/20 dark:bg-emerald-500/10 dark:text-emerald-400 dark:ring-emerald-500/20 px-2.5",
               },
               inactive: {
                 text: "Inactive",
                 classes:
-                  "bg-rose-50 text-rose-700 ring-rose-600/10 dark:bg-rose-500/10 dark:text-rose-400 dark:ring-rose-500/20",
+                  "bg-rose-50 text-rose-700 ring-rose-600/10 dark:bg-rose-500/10 dark:text-rose-400 dark:ring-rose-500/20 px-2.5",
               },
               out_of_stock: {
                 text: "Out of Stock",
                 classes:
-                  "bg-amber-50 text-amber-800 ring-amber-600/20 dark:bg-amber-500/10 dark:text-amber-400 dark:ring-amber-500/20",
+                  "bg-amber-50 text-amber-800 ring-amber-600/20 dark:bg-amber-500/10 dark:text-amber-400 dark:ring-amber-500/20 px-4",
               },
             };
+
             const current = statusConfig[product.status];
+
             return (
               <span
-                className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-medium ring-1 ring-inset ${current.classes}`}
+                className={`inline-flex items-center rounded-md py-1 text-xs font-medium ring-1 ring-inset whitespace-nowrap ${current.classes}`}
               >
                 <span
                   className={`mr-1.5 h-1.5 w-1.5 rounded-full ${
@@ -151,7 +155,7 @@ export default function ProductsTable({
             </button>
           ) : (
             <button
-              onClick={() => {}}
+              onClick={() => navigate(`${product.id}`)}
               className="p-2 border rounded-lg text-zinc-600 dark:text-zinc-300"
             >
               <Eye size={16} />

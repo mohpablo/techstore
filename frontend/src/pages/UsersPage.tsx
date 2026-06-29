@@ -68,7 +68,7 @@ export default function UsersPage() {
   };
 
   return (
-    <div className="p-8">
+    <>
       <UsersHeader
         onAddUser={handleAddUser}
         onViewArchive={handleViewArchive}
@@ -114,6 +114,6 @@ export default function UsersPage() {
           ondelete={deleteUser}
         />
       )}
-    </div>
+    </>
   );
 }

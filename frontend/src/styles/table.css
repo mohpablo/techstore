@@ -1,0 +1,57 @@
+@layer components {
+  .data-table-container {
+    @apply overflow-hidden rounded-2xl border border-(--color-table-border) bg-(--color-table-bg) dark:border-zinc-800 dark:bg-zinc-950;
+  }
+
+  .table-header {
+    @apply flex items-center justify-between border-b border-(--color-table-border) px-6 py-4 dark:border-zinc-800;
+  }
+
+  .table-title {
+    @apply text-lg font-semibold text-black dark:text-white;
+  }
+
+  .table-subtitle {
+    @apply text-sm text-(--color-table-header-text);
+  }
+
+  .table-count-badge {
+    @apply rounded-full bg-(--color-table-badge-bg) px-3 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300;
+  }
+
+  .table-wrapper {
+    @apply overflow-x-auto;
+  }
+
+  .data-table {
+    @apply w-full text-sm;
+  }
+
+  .table-head-row {
+    @apply border-b border-(--color-table-border) text-left text-(--color-table-header-text) dark:border-zinc-800;
+  }
+
+  .table-header-cell {
+    @apply px-6 py-4 font-medium;
+  }
+
+  .table-row {
+    @apply border-b border-zinc-100 transition-colors hover:bg-(--color-table-row-hover) dark:border-zinc-100/5 dark:hover:bg-zinc-900/40;
+  }
+
+  .table-cell {
+    @apply px-6 py-4;
+  }
+
+  .table-footer {
+    @apply flex items-center justify-between border-t border-(--color-table-border) px-6 py-4 dark:border-zinc-800;
+  }
+
+  .pagination-btn {
+    @apply rounded-xl border border-(--color-table-border) bg-(--color-table-bg) px-4 py-2 text-sm font-medium transition-all hover:bg-zinc-50 disabled:opacity-40 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800;
+  }
+
+  .pagination-btn-next {
+    @apply bg-(--color-table-accent) text-white shadow-sm hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-100;
+  }
+}

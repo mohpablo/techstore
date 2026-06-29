@@ -19,7 +19,10 @@ class ProductsController extends Controller
 
         $products = Product::with('category:id,name')
             ->when($request->search, function ($query, $search) {
-                $query->where('name', 'like', "%{$search}%");
+                $query->where('name', 'like', "%{$search}%")
+                ->orWhereHas('category', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                });
             })
             ->when($request->status, function ($query, $status) {
                 $statusEnum = ProductStatusEnum::tryFrom($status);

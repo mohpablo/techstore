@@ -9,7 +9,7 @@ export default function ViewUser() {
   const { user, loading, error } = useViewUser(Number(id));
 
   return (
-    <div className="p-8">
+    <>
       <div
         className="rounded-2xl border overflow-hidden
         border-zinc-200 bg-white
@@ -63,6 +63,6 @@ export default function ViewUser() {
         </div>
       </div>
       {error && <ErrorToast message={error.message} />}
-    </div>
+    </>
   );
 }

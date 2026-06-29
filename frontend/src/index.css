@@ -2,50 +2,23 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@layer utilities {
-  /* Modern premium scrollbar */
-  .scrollbar-modern::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-  }
-
-  .scrollbar-modern::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .scrollbar-modern::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.18);
-    border-radius: 999px;
-    border: 2px solid transparent;
-    background-clip: content-box;
-    transition:
-      background-color 0.25s ease,
-      transform 0.2s ease;
-  }
-
-  .scrollbar-modern::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 0, 0, 0.35);
-  }
-
-  .scrollbar-modern::-webkit-scrollbar-thumb:active {
-    background-color: rgba(0, 0, 0, 0.45);
-  }
-
-  /* Dark mode */
-  .dark .scrollbar-modern::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.14);
-  }
-
-  .dark .scrollbar-modern::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.28);
-  }
-
-  .dark .scrollbar-modern::-webkit-scrollbar-thumb:active {
-    background-color: rgba(255, 255, 255, 0.4);
-  }
-
-  /* Subtle UX polish */
-  .scrollbar-modern::-webkit-scrollbar-corner {
-    background: transparent;
-  }
+@theme {
+  /* Sidebar Theme Tokens */
+  --color-sidebar-bg: var(--color-zinc-950);
+  --color-sidebar-border: var(--color-zinc-800);
+  --color-sidebar-nav-active: var(--color-zinc-900);
+  --color-sidebar-nav-hover: var(--color-zinc-100);
+  --spacing-nav-link: 0.625rem 0.75rem;
+  
+  /* Table Theme Tokens */
+  --color-table-bg: var(--color-white);
+  --color-table-border: var(--color-zinc-200);
+  --color-table-row-hover: var(--color-zinc-50);
+  --color-table-header-text: var(--color-zinc-500);
+  --color-table-badge-bg: var(--color-zinc-100);
+  --color-table-accent: var(--color-black);
 }
+
+
+@import "./styles/sidebar.css";
+@import "./styles/table.css";

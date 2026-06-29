@@ -1,0 +1,45 @@
+@layer components {
+  .sidebar-container {
+    @apply sticky top-0 flex h-screen w-64 flex-col overflow-y-auto border-r border-zinc-200 bg-white dark:border-sidebar-border dark:bg-sidebar-bg;
+  }
+
+  .sidebar-header {
+    @apply border-b border-zinc-200 px-6 py-6 dark:border-zinc-800;
+  }
+
+  .sidebar-title {
+    @apply bg-linear-to-r from-zinc-900 to-zinc-600 bg-clip-text text-lg font-bold tracking-tight text-transparent dark:from-white dark:to-zinc-400;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg font-medium text-sm transition-all duration-200 p-nav-link;
+  }
+
+  .nav-link-inactive {
+    @apply text-zinc-600 hover:bg-(--color-sidebar-nav-hover) hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-white;
+  }
+
+  .nav-link-active {
+    @apply cursor-pointer bg-(--color-sidebar-nav-active) text-white shadow-sm hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200;
+  }
+
+  .profile-section {
+    @apply mt-auto border-t border-zinc-200 p-3 dark:border-zinc-800;
+  }
+
+  .profile-card {
+    @apply rounded-xl border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-900/50;
+  }
+
+  .profile-info {
+    @apply mb-3 flex items-center gap-3;
+  }
+
+  .avatar {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-zinc-900 to-zinc-600 text-sm font-bold text-white dark:from-white dark:to-zinc-400 dark:text-zinc-900;
+  }
+
+  .logout-btn {
+    @apply flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 px-3 py-2 text-sm font-medium text-white transition-all duration-200 hover:bg-zinc-800 hover:shadow-md active:scale-98 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100;
+  }
+}

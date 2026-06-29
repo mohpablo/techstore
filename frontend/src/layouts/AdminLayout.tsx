@@ -19,7 +19,9 @@ export default function AdminLayout() {
           </div>
         </header>
         <main className="flex-1  overflow-auto">
-          <Outlet />
+          <div className="p-8">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>

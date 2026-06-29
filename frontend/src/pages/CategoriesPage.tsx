@@ -60,7 +60,7 @@ export default function CategoriesPage() {
   }, [createdCatName, updatedCatName, archivedCatName, restoredCatName]);
 
   return (
-    <div className="p-8">
+    <>
       <CategoriesHeader
         search={search}
         setSearch={setSearch}
@@ -91,6 +91,6 @@ export default function CategoriesPage() {
           onRestore={restoreCategory}
         />
       )}
-    </div>
+    </>
   );
 }
