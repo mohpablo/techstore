@@ -80,7 +80,7 @@ export default function ViewProduct() {
           </div>
 
           {/* Pricing Box Block */}
-          <div className="text-left sm:text-right bg-zinc-50 dark:bg-zinc-900/50 p-4 rounded-xl border border-zinc-100 dark:border-zinc-800/60 min-w-[140px]">
+          <div className="text-left sm:text-right bg-zinc-50 dark:bg-zinc-900/50 p-4 rounded-xl border border-zinc-100 dark:border-zinc-800/60 min-w-35">
             <span className="text-xs font-medium text-zinc-400 block uppercase tracking-wider">Price Details</span>
             {product.discount_price ? (
               <div className="space-y-0.5">
